@@ -9,7 +9,7 @@ public class Order {
     private Date orderDate;
     private final int orderNum;
     private int quantity;
-    private final double amount;
+    private final float amount;
 
 
     public Order(Customer customer, Product product, Date orderDate, int orderNum, int quantity) {
@@ -59,7 +59,7 @@ public class Order {
         this.quantity = quantity;
     }
 
-    public double getAmount() {
+    public float getAmount() {
         return amount;
     }
 
