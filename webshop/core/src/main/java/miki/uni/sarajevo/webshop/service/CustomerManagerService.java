@@ -14,14 +14,13 @@ import java.util.Date;
  */
 public interface CustomerManagerService {
 
-    void createCustomer(String firstName, String lastName, Gender gender, Date birthDate, String emailAddress, String phoneNumber, Address address);
+
+    public Collection<Customer> listCustomers();
+    public Collection<Customer> listCustomersByCity(City city);
+    public Collection<Customer> listCustomersByCountry(Country country);
+    public Collection<Customer> listCustomersByGender(Gender gender);
 
 
-    Collection<Customer> listCustomers();
+    public void createCustomer(String firstName, String lastName, Gender gender, Date birthDate, String emailAddress, String phoneNumber, Address address);
 
-    Collection<Customer> listCustomersByCity(City city);
-
-    Collection<Customer> listCustomersByCountry(Country country);
-
-    Collection<Customer> listCustomersByGender(Gender gender);
 }

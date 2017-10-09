@@ -14,22 +14,20 @@ import java.util.Collection;
  */
 public interface ProductDAO {
 
-    void createProduct(String name, String description, float price, Availability available) throws ProductAlreadyExsistsException;
+    void createProduct(Product product) throws ProductAlreadyExsistsException;
 
-    void updateProduct(String name, String description, float price, Availability available) throws ProductNotFoundException, ProductAlreadyExsistsException;
+    void updateProduct(Product product) throws ProductNotFoundException;
 
     void deleteProduct(Product product) throws ProductNotFoundException;
 
     Collection<Product> readProducts();
 
+    Collection<Product> readProductsByAvailability(Availability available);
+
     Collection<Product> readProductsByPrice(float price) throws PriceNotFoundException;
 
     Product readProductByPrice(float price) throws PriceNotFoundException;
 
-    Product findProductByName(String name) throws NameNotFoundException;
-
-    Collection<Product> readProductsByAvailability(Availability available);
-
-
+    Product readProductByName(String name) throws NameNotFoundException;
 
 }

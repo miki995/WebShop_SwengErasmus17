@@ -20,9 +20,9 @@ import java.util.Date;
  */
 public interface OrderDAO {
 
-    void createOrder(Customer customer, Product product, Date orderDate, int orderNum, int quantity) throws OrderAlreadyExsistsException;
+    void createOrder(Order order) throws OrderAlreadyExsistsException;
 
-    void updateOrder(Customer customer, Product product, Date orderDate, int orderNum, int quantity) throws OrderNotFoundException;
+    void updateOrder(Order order) throws OrderNotFoundException;
 
     void deleteOrder(Order Order) throws OrderNotFoundException;
 

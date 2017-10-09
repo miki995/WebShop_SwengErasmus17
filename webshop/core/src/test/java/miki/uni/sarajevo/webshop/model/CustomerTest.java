@@ -3,7 +3,6 @@ package miki.uni.sarajevo.webshop.model;
 
 import miki.uni.sarajevo.webshop.model.helpClasses.Address;
 import miki.uni.sarajevo.webshop.model.helpClasses.City;
-import miki.uni.sarajevo.webshop.model.helpClasses.Country;
 import miki.uni.sarajevo.webshop.model.helpClasses.Gender;
 import org.junit.*;
 
@@ -18,7 +17,6 @@ public class CustomerTest {
 
     private Customer miroslav;
     private Customer tomo;
-    private static Address sa;
 
     @BeforeClass
     public static void beforeClass(){
@@ -30,7 +28,7 @@ public class CustomerTest {
 
     @Before
     public void setUp() throws ParseException {
-        sa = new Address("73000",City.SARAJEVO,BOSNIA);
+        Address sa = new Address("73000", City.SARAJEVO, BOSNIA);
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         this.miroslav = new Customer(
                 "Miroslav",

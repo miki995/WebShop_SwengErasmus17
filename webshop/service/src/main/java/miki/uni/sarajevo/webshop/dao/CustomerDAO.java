@@ -2,7 +2,6 @@ package miki.uni.sarajevo.webshop.dao;
 
 import miki.uni.sarajevo.webshop.dao.exceptions.customerExceptions.*;
 import miki.uni.sarajevo.webshop.model.Customer;
-import miki.uni.sarajevo.webshop.model.helpClasses.Address;
 import miki.uni.sarajevo.webshop.model.helpClasses.City;
 import miki.uni.sarajevo.webshop.model.helpClasses.Country;
 import miki.uni.sarajevo.webshop.model.helpClasses.Gender;
@@ -15,9 +14,9 @@ import java.util.Date;
  */
 public interface CustomerDAO {
 
-    void createCustomer(String firstName, String lastName, Gender gender, Date birthDate, String emailAddress, String phoneNumber, Address address) throws CustomerAlreadyExsistsException;
+    void createCustomer(Customer customer) throws CustomerAlreadyExistsException;
 
-    void updateCustomer(String firstName, String lastName, Gender gender,Date birthDate, String emailAddress, String phoneNumber, Address address) throws CustomerNotFoundException;
+    void updateCustomer(Customer customer) throws CustomerNotFoundException;
 
     void deleteCustomer(Customer customer) throws CustomerNotFoundException;
 
