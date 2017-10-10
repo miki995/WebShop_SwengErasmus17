@@ -2,7 +2,7 @@ package miki.uni.sarajevo.webshop.service.impl;
 
 import miki.uni.sarajevo.webshop.dao.ProductDAO;import miki.uni.sarajevo.webshop.dao.exceptions.productExceptions.NameNotFoundException;
 import miki.uni.sarajevo.webshop.dao.exceptions.productExceptions.PriceNotFoundException;
-import miki.uni.sarajevo.webshop.dao.exceptions.productExceptions.ProductAlreadyExsistsException;
+import miki.uni.sarajevo.webshop.dao.exceptions.productExceptions.ProductAlreadyExistsException;
 import miki.uni.sarajevo.webshop.dao.exceptions.productExceptions.ProductNotFoundException;
 import miki.uni.sarajevo.webshop.model.Product;
 import miki.uni.sarajevo.webshop.model.helpClasses.*;
@@ -29,7 +29,7 @@ public class ProductManagerServiceImpl implements ProductManagerService
        Product product = new Product(name, description, price, available);
         try {
             productDAO.createProduct(product);
-        } catch (ProductAlreadyExsistsException e) {
+        } catch (ProductAlreadyExistsException e) {
             LOG.warn(e.getMessage());
         }
 
@@ -62,8 +62,13 @@ public class ProductManagerServiceImpl implements ProductManagerService
 
 
     public Collection<Product> readProductsByPrice (float price) throws PriceNotFoundException {
-
-        return productDAO.readProductsByPrice(price);
+        Collection<Product> result = new HashSet<Product>();
+        for(Product product : productDAO.readProducts()){
+            if(product.getPrice() == price){
+                result.add(product);
+            }
+        }
+        return result;
       }
 
     public Product readProductByPrice(float price) throws PriceNotFoundException {
@@ -75,7 +80,13 @@ public class ProductManagerServiceImpl implements ProductManagerService
     }
 
     public Collection<Product> listProductsByAvailability(Availability available) {
-        return productDAO.readProductsByAvailability(available);
+        Collection<Product> result = new HashSet<Product>();
+        for(Product product : productDAO.readProducts()){
+            if(product.isAvailable() == available){
+                result.add(product);
+            }
+        }
+        return result;
     }
 
 }

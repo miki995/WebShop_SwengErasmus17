@@ -74,4 +74,9 @@ public class Order {
                 ", amount=" + amount +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Order && orderNum == ((Order) obj).getOrderNum();
+    }
 }

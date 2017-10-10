@@ -82,6 +82,10 @@ public class Customer {
         return firstName +" " + lastName;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Customer && firstName.equals(((Customer) obj).firstName) && lastName.equals(((Customer) obj).lastName);
+    }
 
 }
 

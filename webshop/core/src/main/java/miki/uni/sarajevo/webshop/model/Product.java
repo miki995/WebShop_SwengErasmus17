@@ -49,4 +49,9 @@ public class Product {
                 ", available=" + available +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Product && name.equals(((Product) obj).name) && description.equals(((Product) obj).description);
+    }
 }

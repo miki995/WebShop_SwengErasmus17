@@ -12,6 +12,8 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
 
+import static miki.uni.sarajevo.webshop.model.helpClasses.Gender.MALE;
+
 
 public class CustomerManagerServiceImpl implements CustomerManagerService
 {
@@ -25,21 +27,39 @@ public class CustomerManagerServiceImpl implements CustomerManagerService
     }
 
     public Collection<Customer> listCustomers() {
-        LOG.info("List All Customers");
         return customerDAO.readCustomers();
     }
 
     public Collection<Customer> listCustomersByCity(City city) {
-        return  customerDAO.readCustomersByCity(city);
+        Collection<Customer> result = new HashSet<Customer>();
+        for(Customer customer : customerDAO.readCustomers()){
+            if(customer.getCity().equals(city)){
+                result.add(customer);
+            }
+        }
+        return result;
     }
 
 
     public Collection<Customer> listCustomersByCountry(Country country) {
-        return customerDAO.readCustomersByCountry(country);
+        Collection<Customer> result = new HashSet<Customer>();
+        for(Customer customer : customerDAO.readCustomers()){
+            if(customer.getCountry().equals(country)){
+                result.add(customer);
+            }
+        }
+        return result;
     }
 
     public Collection<Customer> listCustomersByGender(Gender gender) {
-        return customerDAO.readCustomersByGender(gender);
+        Collection<Customer> result = new HashSet<Customer>();
+        for(Customer customer : customerDAO.readCustomers()){
+            if(customer.getGender().equals(gender)){
+                result.add(customer);
+            }
+        }
+        return result;
+
     }
 
     public void createCustomer(String firstName, String lastName, Gender gender, Date birthDate, String emailAddress, String phoneNumber, Address address) {

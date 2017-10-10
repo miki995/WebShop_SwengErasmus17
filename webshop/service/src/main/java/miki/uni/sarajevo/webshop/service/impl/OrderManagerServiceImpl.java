@@ -3,7 +3,7 @@ package miki.uni.sarajevo.webshop.service.impl;
 import miki.uni.sarajevo.webshop.dao.OrderDAO;
 import miki.uni.sarajevo.webshop.dao.exceptions.customerExceptions.CustomerNotFoundException;
 import miki.uni.sarajevo.webshop.dao.exceptions.orderExceptions.DateNotFoundException;
-import miki.uni.sarajevo.webshop.dao.exceptions.orderExceptions.OrderAlreadyExsistsException;
+import miki.uni.sarajevo.webshop.dao.exceptions.orderExceptions.OrderAlreadyExistsException;
 import miki.uni.sarajevo.webshop.dao.exceptions.orderExceptions.OrderNotFoundException;
 import miki.uni.sarajevo.webshop.dao.exceptions.orderExceptions.OrderNumNotFoundException;
 import miki.uni.sarajevo.webshop.dao.exceptions.productExceptions.ProductNotFoundException;
@@ -34,7 +34,7 @@ public class OrderManagerServiceImpl implements OrderManagerService
         Order order = new Order(customer, product, orderDate, orderNum, quantity);
         try {
             orderDAO.createOrder(order);
-        } catch (OrderAlreadyExsistsException e) {
+        } catch (OrderAlreadyExistsException e) {
             LOG.warn(e.getMessage());
         }
 
@@ -67,18 +67,36 @@ public class OrderManagerServiceImpl implements OrderManagerService
 
 
 
-    public Collection<Order> readOrdersByCustomer(Customer customer) throws CustomerNotFoundException {
-        return  orderDAO.readOrdersByCustomer(customer);
+    public Collection<Order> listOrdersByCustomer(Customer customer) throws CustomerNotFoundException {
+        Collection<Order> result = new HashSet<Order>();
+        for(Order order : orderDAO.readOrders()){
+            if(order.getCustomer() == customer){
+                result.add(order);
+            }
+        }
+        return result;
     }
 
 
 
     public Collection<Order> readOrdersByProduct(Product product) throws ProductNotFoundException {
-        return  orderDAO.readOrdersByProduct(product);
+        Collection<Order> result = new HashSet<Order>();
+        for(Order order : orderDAO.readOrders()){
+            if(order.getProduct() == product){
+                result.add(order);
+            }
+        }
+        return result;
     }
 
     public Collection<Order> readOrdersByDate(Date date) throws DateNotFoundException {
-        return  orderDAO.readOrdersByDate(date);
+        Collection<Order> result = new HashSet<Order>();
+        for(Order order : orderDAO.readOrders()){
+            if(order.getOrderDate() == date){
+                result.add(order);
+            }
+        }
+        return result;
     }
 
 

@@ -2,7 +2,7 @@ package miki.uni.sarajevo.webshop.dao;
 
 import miki.uni.sarajevo.webshop.dao.exceptions.productExceptions.NameNotFoundException;
 import miki.uni.sarajevo.webshop.dao.exceptions.productExceptions.PriceNotFoundException;
-import miki.uni.sarajevo.webshop.dao.exceptions.productExceptions.ProductAlreadyExsistsException;
+import miki.uni.sarajevo.webshop.dao.exceptions.productExceptions.ProductAlreadyExistsException;
 import miki.uni.sarajevo.webshop.dao.exceptions.productExceptions.ProductNotFoundException;
 import miki.uni.sarajevo.webshop.model.Product;
 import miki.uni.sarajevo.webshop.model.helpClasses.Availability;
@@ -14,7 +14,7 @@ import java.util.Collection;
  */
 public interface ProductDAO {
 
-    void createProduct(Product product) throws ProductAlreadyExsistsException;
+    void createProduct(Product product) throws ProductAlreadyExistsException;
 
     void updateProduct(Product product) throws ProductNotFoundException;
 

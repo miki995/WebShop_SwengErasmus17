@@ -3,10 +3,9 @@ package miki.uni.sarajevo.webshop.dao;
 
 import miki.uni.sarajevo.webshop.dao.exceptions.customerExceptions.CustomerNotFoundException;
 import miki.uni.sarajevo.webshop.dao.exceptions.orderExceptions.DateNotFoundException;
-import miki.uni.sarajevo.webshop.dao.exceptions.orderExceptions.OrderAlreadyExsistsException;
+import miki.uni.sarajevo.webshop.dao.exceptions.orderExceptions.OrderAlreadyExistsException;
 import miki.uni.sarajevo.webshop.dao.exceptions.orderExceptions.OrderNotFoundException;
 import miki.uni.sarajevo.webshop.dao.exceptions.orderExceptions.OrderNumNotFoundException;
-import miki.uni.sarajevo.webshop.dao.exceptions.productExceptions.PriceNotFoundException;
 import miki.uni.sarajevo.webshop.dao.exceptions.productExceptions.ProductNotFoundException;
 import miki.uni.sarajevo.webshop.model.Customer;
 import miki.uni.sarajevo.webshop.model.Order;
@@ -20,7 +19,7 @@ import java.util.Date;
  */
 public interface OrderDAO {
 
-    void createOrder(Order order) throws OrderAlreadyExsistsException;
+    void createOrder(Order order) throws OrderAlreadyExistsException;
 
     void updateOrder(Order order) throws OrderNotFoundException;
 
